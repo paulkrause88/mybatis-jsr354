@@ -17,5 +17,4 @@ public class COPAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return COP;
 	}
-
 }

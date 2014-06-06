@@ -17,5 +17,4 @@ public class TRYAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return TRY;
 	}
-
 }

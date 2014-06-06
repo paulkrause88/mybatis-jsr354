@@ -17,5 +17,4 @@ public class NZDAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return NZD;
 	}
-
 }

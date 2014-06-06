@@ -17,5 +17,4 @@ public class THBAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return THB;
 	}
-
 }

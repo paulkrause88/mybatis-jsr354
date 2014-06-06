@@ -17,5 +17,4 @@ public class USDAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return USD;
 	}
-
 }

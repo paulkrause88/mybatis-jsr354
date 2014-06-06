@@ -17,5 +17,4 @@ public class AUDAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return AUD;
 	}
-
 }

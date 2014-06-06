@@ -17,5 +17,4 @@ public class CNYAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return CNY;
 	}
-
 }

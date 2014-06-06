@@ -17,5 +17,4 @@ public class JPYAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return JPY;
 	}
-
 }

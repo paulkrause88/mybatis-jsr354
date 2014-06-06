@@ -17,5 +17,4 @@ public class MXNAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return MXN;
 	}
-
 }

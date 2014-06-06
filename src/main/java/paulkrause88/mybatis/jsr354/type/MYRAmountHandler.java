@@ -17,5 +17,4 @@ public class MYRAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return MYR;
 	}
-
 }

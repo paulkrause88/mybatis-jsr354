@@ -17,5 +17,4 @@ public class CHFAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return CHF;
 	}
-
 }

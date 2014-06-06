@@ -17,5 +17,4 @@ public class KRWAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return KRW;
 	}
-
 }

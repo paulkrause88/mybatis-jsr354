@@ -17,6 +17,4 @@ public class SGDAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return SGD;
 	}
-
-	
 }

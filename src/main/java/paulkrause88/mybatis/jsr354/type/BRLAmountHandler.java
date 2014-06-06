@@ -17,5 +17,4 @@ public class BRLAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return BRL;
 	}
-
 }

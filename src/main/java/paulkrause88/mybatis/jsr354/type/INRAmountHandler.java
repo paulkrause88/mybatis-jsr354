@@ -17,5 +17,4 @@ public class INRAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return INR;
 	}
-
 }

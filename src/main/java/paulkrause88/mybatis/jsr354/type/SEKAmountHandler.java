@@ -17,5 +17,4 @@ public class SEKAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return SEK;
 	}
-
 }

@@ -17,5 +17,4 @@ public class DKKAmountHandler extends AbstractMonetaryAmountHandler {
 	public CurrencyUnit getCurrency() {
 		return DKK;
 	}
-
 }
