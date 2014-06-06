@@ -22,6 +22,7 @@ public class USDAmountHandler extends BaseTypeHandler<MonetaryAmount> {
 	private static final ThreadLocal<MonetaryAmountFactory<? extends MonetaryAmount>> USD_FACTORIES = new ThreadLocal<>();
 	
 	static MonetaryAmount toUSD(BigDecimal big) {
+		if (big == null) return null;
 		MonetaryAmountFactory<? extends MonetaryAmount> factory = USD_FACTORIES.get();
 		if (factory == null) {
 			factory = MonetaryAmounts.getAmountFactory();

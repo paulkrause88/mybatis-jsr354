@@ -16,19 +16,24 @@ import org.apache.ibatis.type.MappedJdbcTypes;
 @MappedJdbcTypes(JdbcType.DATE)
 public class LocalDateHandler extends BaseTypeHandler<LocalDate> {
 
-	@Override
-	public LocalDate getNullableResult(CallableStatement cs, int col) throws SQLException {
-		return cs.getDate(col).toLocalDate();
+	static LocalDate toLocalDate(Date date) {
+		return date == null ? null : date.toLocalDate();
 	}
 
 	@Override
+	public LocalDate getNullableResult(CallableStatement cs, int col) throws SQLException {
+		return toLocalDate(cs.getDate(col));
+	}
+
+
+	@Override
 	public LocalDate getNullableResult(ResultSet rs, int col) throws SQLException {
-		return rs.getDate(col).toLocalDate();
+		return toLocalDate(rs.getDate(col));
 	}
 
 	@Override
 	public LocalDate getNullableResult(ResultSet rs, String col) throws SQLException {
-		return rs.getDate(col).toLocalDate();
+		return toLocalDate(rs.getDate(col));
 	}
 
 	@Override
