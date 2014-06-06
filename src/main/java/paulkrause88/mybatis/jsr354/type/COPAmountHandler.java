@@ -1,6 +1,7 @@
 package paulkrause88.mybatis.jsr354.type;
 
-import javax.money.MonetaryAmountFactory;
+import javax.money.CurrencyUnit;
+import javax.money.MonetaryCurrencies;
 
 import org.apache.ibatis.type.Alias;
 import org.apache.ibatis.type.JdbcType;
@@ -10,9 +11,11 @@ import org.apache.ibatis.type.MappedJdbcTypes;
 @MappedJdbcTypes(JdbcType.DECIMAL)
 public class COPAmountHandler extends AbstractMonetaryAmountHandler {
 
+	private static final CurrencyUnit COP = MonetaryCurrencies.getCurrency("COP");
+
 	@Override
-	protected MonetaryAmountFactory<?> getFactory() {
-		return getFactory("COP");
-	}	
+	public CurrencyUnit getCurrency() {
+		return COP;
+	}
 
 }

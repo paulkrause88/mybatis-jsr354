@@ -1,6 +1,7 @@
 package paulkrause88.mybatis.jsr354.type;
 
-import javax.money.MonetaryAmountFactory;
+import javax.money.CurrencyUnit;
+import javax.money.MonetaryCurrencies;
 
 import org.apache.ibatis.type.Alias;
 import org.apache.ibatis.type.JdbcType;
@@ -10,8 +11,10 @@ import org.apache.ibatis.type.MappedJdbcTypes;
 @MappedJdbcTypes(JdbcType.DECIMAL)
 public class ZARAmountHandler extends AbstractMonetaryAmountHandler {
 
+	private static final CurrencyUnit ZAR = MonetaryCurrencies.getCurrency("ZAR");
+
 	@Override
-	protected MonetaryAmountFactory<?> getFactory() {
-		return getFactory("ZAR");
-	}	
+	public CurrencyUnit getCurrency() {
+		return ZAR;
+	}
 }
