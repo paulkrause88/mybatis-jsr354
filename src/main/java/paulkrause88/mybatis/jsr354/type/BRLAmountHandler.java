@@ -2,7 +2,6 @@ package paulkrause88.mybatis.jsr354.type;
 
 import java.math.BigDecimal;
 import java.sql.CallableStatement;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -11,13 +10,12 @@ import javax.money.MonetaryAmountFactory;
 import javax.money.MonetaryAmounts;
 
 import org.apache.ibatis.type.Alias;
-import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
 
 @Alias("BRLAmountHandler")
 @MappedJdbcTypes(JdbcType.DECIMAL)
-public class BRLAmountHandler extends BaseTypeHandler<MonetaryAmount> {
+public class BRLAmountHandler extends AbstractMonetaryAmountHandler {
 	
 	private static final ThreadLocal<MonetaryAmountFactory<? extends MonetaryAmount>> BRL_FACTORIES = new ThreadLocal<>();
 	
@@ -47,11 +45,6 @@ public class BRLAmountHandler extends BaseTypeHandler<MonetaryAmount> {
 	@Override
 	public MonetaryAmount getNullableResult(CallableStatement cs, int col) throws SQLException {
 		return toBRL(cs.getBigDecimal(col));
-	}
-
-	@Override
-	public void setNonNullParameter(PreparedStatement ps, int i, MonetaryAmount x, JdbcType type) throws SQLException {
-		ps.setBigDecimal(i, x.getNumber().numberValueExact(BigDecimal.class));
 	}
 
 }
