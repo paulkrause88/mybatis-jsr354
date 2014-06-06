@@ -52,7 +52,14 @@ public class PublicDebtTest {
 			PublicDebt us = mapper.selectMostRecent("US");
 			assertNotNull(us);
 			assertEquals("US", us.getCountryCode());
-			
+			assertEquals(17344649899999L, us.getExternalDebtUSD().getNumber().longValue());
+			assertEquals("USD", us.getExternalDebtUSD().getCurrency().getCurrencyCode());
+			assertEquals(2, us.getExternalDebtUSD().getCurrency().getDefaultFractionDigits());
+			assertEquals(840, us.getExternalDebtUSD().getCurrency().getNumericCode());
+			assertEquals(52170, us.getPerCapitaUSD().getNumber().intValue());
+			assertEquals("USD", us.getPerCapitaUSD().getCurrency().getCurrencyCode());
+			assertEquals(2, us.getPerCapitaUSD().getCurrency().getDefaultFractionDigits());
+			assertEquals(840, us.getPerCapitaUSD().getCurrency().getNumericCode());
 		}
 	}
 
