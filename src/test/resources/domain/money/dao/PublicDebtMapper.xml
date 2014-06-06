@@ -22,7 +22,7 @@
   select country_code, external_debt_usd, as_of, per_capita_usd, percent_gdp 
   from public_debt 
   where country_code = #{param1}
-  order by as_of
+  order by as_of desc
   limit 1
   </select>
   
