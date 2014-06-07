@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.Year;
 
 import javax.money.CurrencyUnit;
+import javax.money.MonetaryAmount;
 import javax.money.MonetaryCurrencies;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
@@ -90,6 +91,9 @@ public class MoneyDomainTest {
 			assertEquals(Year.of(2009), jp.getForYear());
 			assertEquals("JPY 470936600000000", jp.getDomesticProduct().toString());
 			assertEquals("JPY 266233000000000", jp.getNetPosition().toString());
+			// diff =     JPY 204703600000000
+			final MonetaryAmount diff = jp.getDomesticProduct().subtract(jp.getNetPosition());
+			assertEquals(204703600000000L, diff.getNumber().longValue());
 		}
 	}
 
@@ -102,6 +106,9 @@ public class MoneyDomainTest {
 			assertEquals(Year.of(2010), ch.getForYear());
 			assertEquals("CHF 546245000000", ch.getDomesticProduct().toString());
 			assertEquals("CHF 743704000000", ch.getNetPosition().toString());
+			// diff =     CHF-197459000000 
+			final MonetaryAmount diff = ch.getDomesticProduct().subtract(ch.getNetPosition());
+			assertEquals(-197459000000L, diff.getNumber().longValue());
 		}
 	}
 
