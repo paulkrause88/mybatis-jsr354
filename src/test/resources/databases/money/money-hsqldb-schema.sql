@@ -8,3 +8,10 @@ create table public_debt (
 	percent_gdp double,
 	constraint pk_debt primary key (country_code, as_of) 
 );
+
+create table net_intl_invst_pos (
+	country_code char(2) not null,
+	for_year int not null,
+	domestic_product varchar(32) not null,
+	net_position varchar(32) not null,
+);
