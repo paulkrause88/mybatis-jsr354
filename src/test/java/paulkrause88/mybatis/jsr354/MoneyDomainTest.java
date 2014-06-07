@@ -88,8 +88,20 @@ public class MoneyDomainTest {
 			NetIntlInvstPos jp = mapper.selectMostRecent("JP");
 			assertEquals("JP", jp.getCountryCode());
 			assertEquals(Year.of(2009), jp.getForYear());
-			//'470936600000000 JPY', 
-			//'266233000000000 JPY'
+			assertEquals("JPY 470936600000000", jp.getDomesticProduct().toString());
+			assertEquals("JPY 266233000000000", jp.getNetPosition().toString());
+		}
+	}
+
+	@Test
+	public void testGetNetIntlInvstPosCH() {
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			NetIntlInvstPosMapper mapper = session.getMapper(NetIntlInvstPosMapper.class);
+			NetIntlInvstPos ch = mapper.selectMostRecent("CH");
+			assertEquals("CH", ch.getCountryCode());
+			assertEquals(Year.of(2010), ch.getForYear());
+			assertEquals("CHF 546245000000", ch.getDomesticProduct().toString());
+			assertEquals("CHF 743704000000", ch.getNetPosition().toString());
 		}
 	}
 
