@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="domain.money.dao.PublicDebtMapper">
 
-  <resultMap type="domain.money.model.PublicDebt" id="myResultMap">
-  	<constructor>
-  		<arg column="country_code" javaType="string"/>
-  		<arg column="external_debt_usd" javaType="javax.money.MonetaryAmount" jdbcType="DECIMAL" 
-  			typeHandler="paulkrause88.mybatis.jsr354.type.USDAmountHandler"/>
-  		<arg column="as_of" javaType="java.time.LocalDate" jdbcType="DATE" 
-  			typeHandler="paulkrause88.mybatis.jsr354.type.LocalDateHandler"/>
-  		<arg column="per_capita_usd" javaType="javax.money.MonetaryAmount" jdbcType="DECIMAL" 
-  			typeHandler="paulkrause88.mybatis.jsr354.type.USDAmountHandler"/>
-  		<arg column="percent_gdp" javaType="_double"/>		
-  	</constructor>
-  </resultMap>
-  
-  <select id="selectMostRecent" parameterType="string" resultMap="myResultMap">
-  select country_code, external_debt_usd, as_of, per_capita_usd, percent_gdp 
-  from public_debt 
-  where country_code = #{param1}
-  order by as_of desc
-  limit 1
-  </select>
-  
+	<resultMap type="domain.money.model.PublicDebt" id="myResultMap">
+		<constructor>
+			<arg column="country_code" javaType="java.util.Locale" jdbcType="CHAR"
+				typeHandler="paulkrause88.mybatis.jsr354.type.CountryCodeHandler" />
+			<arg column="external_debt_usd" javaType="javax.money.MonetaryAmount"
+				jdbcType="DECIMAL" typeHandler="paulkrause88.mybatis.jsr354.type.USDAmountHandler" />
+			<arg column="as_of" javaType="java.time.LocalDate" jdbcType="DATE"
+				typeHandler="paulkrause88.mybatis.jsr354.type.LocalDateHandler" />
+			<arg column="per_capita_usd" javaType="javax.money.MonetaryAmount"
+				jdbcType="DECIMAL" typeHandler="paulkrause88.mybatis.jsr354.type.USDAmountHandler" />
+			<arg column="percent_gdp" javaType="_double" />
+		</constructor>
+	</resultMap>
+
+	<select id="selectMostRecent" parameterType="string" resultMap="myResultMap">
+		select country_code, external_debt_usd, as_of, per_capita_usd, percent_gdp
+		from public_debt
+		where country_code = #{param1}
+		order by as_of desc
+		limit 1
+	</select>
+
 </mapper>

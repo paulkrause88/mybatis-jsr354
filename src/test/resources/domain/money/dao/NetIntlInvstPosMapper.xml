@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="domain.money.dao.NetIntlInvstPosMapper">
 
-  <resultMap type="domain.money.model.NetIntlInvstPos" id="myResultMap">
-	<constructor>
-		<arg column="country_code" javaType="string"/>
-		<arg column="for_year" javaType="java.time.Year" jdbcType="INTEGER"
-  			typeHandler="paulkrause88.mybatis.jsr354.type.YearHandler"/>
-  		<arg column="domestic_product"  javaType="javax.money.MonetaryAmount" jdbcType="VARCHAR"
-  			typeHandler="paulkrause88.mybatis.jsr354.type.MixedCurrencyAmountHandler"/>
-  		<arg column="net_position" javaType="javax.money.MonetaryAmount" jdbcType="VARCHAR"
-  			typeHandler="paulkrause88.mybatis.jsr354.type.MixedCurrencyAmountHandler"/>
-  	</constructor>
-  </resultMap>
-  
-  <select id="selectMostRecent" parameterType="string" resultMap="myResultMap">
-  select country_code, for_year, domestic_product, net_position 
-  from net_intl_invst_pos 
-  where country_code = #{param1}
-  order by for_year desc
-  limit 1
-  </select>
-  
+	<resultMap type="domain.money.model.NetIntlInvstPos" id="myResultMap">
+		<constructor>
+			<arg column="country_code" javaType="java.util.Locale" jdbcType="CHAR"
+				typeHandler="paulkrause88.mybatis.jsr354.type.CountryCodeHandler" />
+			<arg column="for_year" javaType="java.time.Year" jdbcType="INTEGER"
+				typeHandler="paulkrause88.mybatis.jsr354.type.YearHandler" />
+			<arg column="domestic_product" javaType="javax.money.MonetaryAmount"
+				jdbcType="VARCHAR"
+				typeHandler="paulkrause88.mybatis.jsr354.type.MixedCurrencyAmountHandler" />
+			<arg column="net_position" javaType="javax.money.MonetaryAmount"
+				jdbcType="VARCHAR"
+				typeHandler="paulkrause88.mybatis.jsr354.type.MixedCurrencyAmountHandler" />
+		</constructor>
+	</resultMap>
+
+	<select id="selectMostRecent" parameterType="string" resultMap="myResultMap">
+		select country_code, for_year, domestic_product, net_position
+		from net_intl_invst_pos
+		where country_code = #{param1}
+		order by for_year desc
+		limit 1
+	</select>
+
 </mapper>

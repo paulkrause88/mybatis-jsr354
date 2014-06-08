@@ -1,18 +1,19 @@
 package domain.money.model;
 
 import java.time.LocalDate;
+import java.util.Locale;
 
 import javax.money.MonetaryAmount;
 
 public class PublicDebt {
-	private final String countryCode;
+	private final Locale countryLocale;
 	private final MonetaryAmount externalDebtUSD;
 	private final LocalDate asOfDate;
 	private final MonetaryAmount perCapitaUSD;
 	private final double percentGDP;
 	
-	public PublicDebt(String iso, MonetaryAmount debt, LocalDate asof, MonetaryAmount percap, double percent) {
-		countryCode = iso;
+	public PublicDebt(Locale country, MonetaryAmount debt, LocalDate asof, MonetaryAmount percap, double percent) {
+		countryLocale = country;
 		externalDebtUSD = debt;
 		asOfDate = asof;
 		perCapitaUSD = percap;
@@ -20,7 +21,7 @@ public class PublicDebt {
 	}
 
 	public String getCountryCode() {
-		return countryCode;
+		return countryLocale.getCountry();
 	}
 
 	public MonetaryAmount getExternalDebtUSD() {
