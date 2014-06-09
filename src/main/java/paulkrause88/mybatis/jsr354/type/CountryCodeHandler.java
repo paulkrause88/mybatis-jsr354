@@ -19,8 +19,15 @@ public class CountryCodeHandler extends BaseTypeHandler<Locale> {
 	private static final Map<String, Locale> LOCALE_MAP = new HashMap<>();
 	
 	static {
+		for (Locale loc : Locale.getAvailableLocales()) {
+			if (loc.getCountry().length() == 2) {
+				LOCALE_MAP.put(loc.getCountry(), loc);
+			}
+		}
 		for (String iso : Locale.getISOCountries()) {
-			LOCALE_MAP.put(iso, new Locale.Builder().setRegion(iso).build());
+			if (LOCALE_MAP.get(iso) == null) {
+				LOCALE_MAP.put(iso, new Locale.Builder().setRegion(iso).build());
+			}
 		}
 	}
 
